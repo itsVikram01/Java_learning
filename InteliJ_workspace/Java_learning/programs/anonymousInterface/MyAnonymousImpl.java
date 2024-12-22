@@ -1,7 +1,7 @@
 package anonymousInterface;
 
 interface MyAnonymousInterface {
-	// anonymous interface can have 2 or more than 2 methods unlike functional interface.
+	// anonymous interface can have 2 or more than 2 methods unlike functional interface which have only one abstract method.
 	void switchOn();
 	void switchOff();
 }
