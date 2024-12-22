@@ -5,10 +5,9 @@ import java.util.Hashtable;
 public class HashtableExample {
     public static void main(String[] args) {
         Hashtable<Integer, String> ht = new Hashtable<>();
-        // Add key-value pairs
-        ht.put(1, "Apple");
+        ht.put(1, "Cherry");
         ht.put(2, "Banana");
-        ht.put(3, "Cherry");
+        ht.put(3, "Apple");
 
         // Get a value using a key
         String fruit = ht.get(2);

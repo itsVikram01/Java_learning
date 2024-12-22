@@ -1,24 +1,21 @@
 package collectionFramework.map.hashMap;
 
-import java.util.HashMap;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class HashMapExample {
     public static void main(String[] args) {
-        // Create a HashMap
         HashMap<Integer, String> hm = new HashMap<>();
-
-        // Add key-value pairs
-        hm.put(1, "Apple");
-        hm.put(2, "Banana");
-        hm.put(3, "Cherry");
+        hm.put(3, "Banana");
+        hm.put(1, "Cherry");
+        hm.put(2, "Apple");
 
         // Get a value using a key
-        String fruit = hm.get(2);
-        System.out.println("Fruit at key 2: " + fruit);
+        System.out.println("Fruit at key 2: " + hm.get(2));
 
         // Check if a key exists
-        boolean containsKey = hm.containsKey(4);
-        System.out.println("Does the HashMap contain key 4? " + containsKey);
+        System.out.println("HashMap contain key 4 : " + hm.containsKey(4));
 
         // Get all keys
         System.out.println("Keys in the HashMap: " + hm.keySet());
@@ -27,9 +24,37 @@ public class HashMapExample {
         System.out.println("Values in the HashMap: " + hm.values());
 
         // Remove a key-value pair
-        hm.remove(1);
+        //hm.remove(1);
 
         // Print the updated HashMap
         System.out.println("Updated HashMap: " + hm);
+
+        // sorted key
+        /*Stream<Integer> sortedKeys = hm.keySet().stream().sorted();//.forEach(System.out::println);
+        System.out.println(sortedKeys.toList());*/
+
+        // sorted values
+        /*Stream<String> sortedValues = hm.values().stream().sorted();//.forEach(System.out::println);
+        System.out.println(sortedValues.toList());*/
+
+        List<Integer> key = new ArrayList<>(hm.keySet());
+        Collections.sort(key);
+        System.out.println("Sorted Map by keys : "+key);
+
+        System.out.println("Sorted Map by keys using java8 : ");
+        hm.entrySet().stream().sorted(Map.Entry.comparingByKey())
+                .forEach(entry -> System.out.println(entry.getKey()));
+
+        System.out.println("Sorted Map by values using java8 : ");
+        hm.entrySet().stream().sorted(Map.Entry.comparingByValue())
+                .forEach(entry -> System.out.println(entry.getValue()));
+
+
+        // Iterating or looping using entrySet() method
+        System.out.println("Iterating or looping map using entrySet and enhanced for loop");
+        for (Map.Entry<Integer, String> entry : hm.entrySet()) {
+            System.out.println("key: " + entry.getKey() + " value: " + entry.getValue());
+        }
+
     }
 }

@@ -4,28 +4,33 @@ import java.util.*;
 
 public class HashMapSynchronizeExample {
 	public static void main(String[] args) {
-		// Creating a HashMap of Integer keys and String values
-		HashMap<Integer, String> hashmap = new HashMap<Integer, String>();
-		hashmap.put(4, "Value4");
-		hashmap.put(5, "Value5");
-		hashmap.put(1, "Value1");
-		hashmap.put(2, "Value2");
-		hashmap.put(3, "Value3");
-		System.out.println("hashmap : "+hashmap);
-		
-		Map<Integer, String> map = Collections.synchronizedMap(hashmap);
-		System.out.println("map : "+map);
-		Set<?> set = map.entrySet();
-		System.out.println("set : "+set);
-		
-		synchronized (map) {
-			Iterator<?> i = set.iterator();
-			// Display elements
-			while (i.hasNext()) {
-				@SuppressWarnings("unchecked")
-				Map.Entry<Integer, String> entry = (Map.Entry<Integer, String>) i.next();
-				System.out.print(entry.getKey() + ": ");
-				System.out.println(entry.getValue());
+		// Create a HashMap
+		HashMap<String, String> hashMap = new HashMap<>();
+
+		// Synchronize the HashMap using Collections.synchronizedMap
+		Map<String, String> synchronizedMap = Collections.synchronizedMap(hashMap);
+		// Adding elements to the synchronized map
+		synchronizedMap.put("1", "Apple");
+		synchronizedMap.put("2", "Banana");
+		synchronizedMap.put("3", "Cherry");
+
+		// Accessing elements in a synchronized way
+		synchronized (synchronizedMap) {
+			for (Map.Entry<String, String> entry : synchronizedMap.entrySet()) {
+				System.out.println(entry.getKey() + " : " + entry.getValue());
+			}
+		}
+
+		// Updating elements safely
+		synchronized (synchronizedMap) {
+			synchronizedMap.put("4", "Date");
+			System.out.println("Added: 4 : Date");
+		}
+
+		// Accessing the updated map
+		synchronized (synchronizedMap) {
+			for (Map.Entry<String, String> entry : synchronizedMap.entrySet()) {
+				System.out.println(entry.getKey() + " : " + entry.getValue());
 			}
 		}
 	}
