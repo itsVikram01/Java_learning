@@ -1,14 +1,16 @@
-package collectionFramework.enums;
+package _imp.enums;
 
-// Defining an enum for days of the week
+//enum is a special class in Java that represents a group of constants (unchangeable variables, like final variables).
+// It’s commonly used when you have a fixed set of related constants.
+
 enum Day {
     SUNDAY, MONDAY, TUESDAY, WEDNESDAY, THURSDAY, FRIDAY, SATURDAY;
 }
 
 public class EnumExample {
     public static void main(String[] args) {
-        // Using the enum
         Day today = Day.MONDAY;
+        System.out.println("Today is: " + today);
 
         // Switch case using enum
         switch (today) {

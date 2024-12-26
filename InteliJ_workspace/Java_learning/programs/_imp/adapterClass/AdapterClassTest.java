@@ -1,4 +1,4 @@
-package adapterClass;
+package _imp.adapterClass;
 
 /* Interface are collection of abstract methods and constant fields which are any Service Requirement Specification(SRS).
 It does not provide implementation of any methods.
