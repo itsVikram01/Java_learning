@@ -19,7 +19,7 @@ class Subscriber implements Observer {
     }
 }
 
-public class ChannelObserverPattern {
+public class ObserverPattern {
     private List<Observer> subscribers = new ArrayList<>();
 
     public void subscribe(Observer observer) {
@@ -33,7 +33,7 @@ public class ChannelObserverPattern {
     }
 
     public static void main(String[] args) {
-        ChannelObserverPattern channel = new ChannelObserverPattern();
+        ObserverPattern channel = new ObserverPattern();
         Observer user1 = new Subscriber("User1");
         channel.subscribe(user1);
         channel.notifySubscribers("New Video Uploaded");
